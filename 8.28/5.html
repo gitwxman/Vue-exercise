@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="../js/vue.js"></script>
+    <style>
+        button{
+            margin-top: 5px;
+        }
+    </style>
+</head>
+
+<body>
+    <div id="root">
+        <h1>人员列表</h1>
+        <input type="text" placeholder="请输入名字" v-model="keyWord"><br>
+        <button @click="unType">更新周冬雨信息</button>
+        <ul>
+            <li v-for="(p,index) in person" :key="index">
+                {{p.name}}-{{p.age}}-{{p.gender}}
+            </li> 
+        </ul>
+    </div>
+
+</body>
+<script>
+    const vm = new Vue({
+        el: "#root",
+        data: {
+            keyWord: "", 
+            sortType:0, //0 原顺序 1 降序 2 升序
+            person: [
+                { id: 002, name: "周冬雨", age: 21, gender: "女" },
+                { id: 001, name: "马冬梅", age: 33, gender: "女" },
+                { id: 003, name: "周杰伦", age: 22, gender: "男" },
+                { id: 004, name: "温兆伦", age: 15, gender: "男" }
+            ],
+        },
+        methods: {
+            unType() {
+                //vue
+                this.person[0] = { id: 002, name: "周周周", age: 31, gender: "女" }
+            }
+        }
+    }) 
+</script>
+
+</html>
